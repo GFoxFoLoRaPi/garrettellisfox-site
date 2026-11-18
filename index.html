@@ -3,37 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garrett Ellis Fox — Systems Builder, Prototyper &amp; Co-Founder</title>
+  <title>Garrett Ellis Fox — FedEWAM Interactive Architecture</title>
   <style>
     :root { --bg: #0c0e14; --card: #141824; --border: #252b3d; --text: #f3f4f6; --muted: #9ca3af; --aff: #38bdf8; --mfg: #fb923c; --edge: #4ade80; }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; }
-    header { border-bottom: 1px solid var(--border); padding-bottom: 28px; margin-bottom: 32px; }
-    .role { color: var(--aff); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-    h1 { font-size: clamp(30px, 5vw, 44px); margin: 0 0 12px; line-height: 1.15; }
-    .bio { max-width: 740px; color: var(--muted); font-size: 16.5px; margin: 0 0 20px; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 68px; }
+    header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 28px; }
+    .role { color: var(--aff); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    h1 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 10px; line-height: 1.15; }
+    .bio { max-width: 740px; color: var(--muted); font-size: 16px; margin: 0 0 18px; }
     .links { display: flex; flex-wrap: wrap; gap: 10px; }
-    .links a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 15px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .links a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 13.5px; font-weight: 600; }
     .links a:hover { border-color: var(--aff); }
-    .controls { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
-    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
-    .fbtn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 13px; }
-    .fbtn.active { background: #1e293b; border-color: var(--aff); color: var(--aff); }
-    .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
-    .node { background: var(--card); border: 2px solid var(--border); border-radius: 14px; padding: 20px; cursor: pointer; transition: transform 0.12s ease, border-color 0.12s ease; }
-    .node:hover, .node.selected { transform: translateY(-2px); border-color: var(--aff); }
-    .tier { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--edge); margin-bottom: 6px; }
-    .node h3 { margin: 0 0 10px; font-size: 18px; }
-    .tag { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px; margin: 4px 0; }
-    .tag.aff { background: #0c4a6e; color: var(--aff); }
-    .tag.mfg { background: #7c2d12; color: var(--mfg); }
-    ul.items { padding-left: 17px; margin: 6px 0 10px; font-size: 13.5px; color: var(--muted); }
-    .inspector { background: #101522; border: 1px solid #38bdf855; border-radius: 14px; padding: 22px 24px; margin-bottom: 28px; }
-    .inspector h4 { margin: 0 0 6px; color: var(--aff); font-size: 16px; }
-    .starter { background: linear-gradient(135deg, #0f2419, #141824); border: 1px solid #4ade8055; border-radius: 14px; padding: 22px 24px; margin-bottom: 36px; }
-    .starter h3 { margin: 0 0 8px; color: var(--edge); font-size: 18px; }
-    footer { border-top: 1px solid var(--border); padding-top: 20px; color: var(--muted); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .graph-box { background: #0f131d; border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 24px; overflow-x: auto; }
+    svg.noodles { width: 100%; min-width: 760px; height: auto; display: block; }
+    .g-node { cursor: pointer; transition: opacity 0.15s ease; }
+    .g-node:hover rect.box { stroke: #38bdf8; stroke-width: 3; }
+    .inspector { background: #101522; border: 1px solid #38bdf866; border-radius: 14px; padding: 22px 24px; margin-bottom: 26px; }
+    .inspector h3 { margin: 0 0 8px; color: var(--aff); font-size: 18px; }
+    .bom-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .bom-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid var(--border); }
+    .bom-pill.aff { background: #0c4a6e; color: var(--aff); border-color: #38bdf855; }
+    .bom-pill.mfg { background: #431407; color: var(--mfg); border-color: #fb923c55; }
+    .starter { background: linear-gradient(135deg, #0f2419, #141824); border: 1px solid #4ade8055; border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; }
+    footer { border-top: 1px solid var(--border); padding-top: 18px; color: var(--muted); font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   </style>
 </head>
 <body>
@@ -41,7 +35,7 @@
     <header>
       <div class="role">Co-Founder &amp; CEO · Fox &amp; Flame Foundry</div>
       <h1>Garrett Ellis Fox</h1>
-      <p class="bio">Systems builder, prototyper, and architect of the <strong>Federated Edge-to-Workstation Agentic Mesh (FedEWAM)</strong>—combining local AI workstations, 24/7 low-power edge hubs, desktop 3D manufacturing, and off-grid LoRa mesh hardware.</p>
+      <p class="bio">Architect of the <strong>Federated Edge-to-Workstation Agentic Mesh (FedEWAM)</strong>—click any node in the interactive graph below to inspect the off-the-shelf gear and desktop-manufactured 3D parts behind each tier.</p>
       <div class="links">
         <a href="https://gumroad.com" target="_blank" rel="noopener">Fox &amp; Flame Foundry ↗</a>
         <a href="https://toolboxgadgets.com" target="_blank" rel="noopener">Toolbox Gadgets ↗</a>
@@ -49,36 +43,117 @@
         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </header>
-    <div class="controls">
-      <div>
-        <h2 style="margin:0 0 4px;font-size:22px;">Interactive FedEWAM DIY Build Blueprint</h2>
-        <p style="margin:0;color:var(--muted);font-size:14px;">Click any tier card to inspect hardware details or filter by off-the-shelf vs. desktop-manufactured parts.</p>
-      </div>
-      <div class="filters">
-        <button class="fbtn active" onclick="filterParts('all', this)">All Components</button>
-        <button class="fbtn" onclick="filterParts('aff', this)">Affiliate Gear (BoM)</button>
-        <button class="fbtn" onclick="filterParts('mfg', this)">Desktop-Manufactured</button>
-      </div>
+    <div class="graph-box">
+      <svg class="noodles" viewBox="0 0 960 290" xmlns="http://w3.org">
+        <!-- Curved Noodles -->
+        <path d="M 240 85 C 300 85, 300 85, 360 85" stroke="#38bdf8" stroke-width="3.5" fill="none" />
+        <path d="M 600 85 C 660 85, 660 85, 720 85" stroke="#4ade80" stroke-width="3.5" fill="none" />
+        <path d="M 480 145 C 480 185, 480 185, 480 205" stroke="#fb923c" stroke-width="3.5" stroke-dasharray="6 4" fill="none" />
+        <text x="262" y="74" fill="#38bdf8" font-size="11" font-weight="700">Tailscale / SMB</text>
+        <text x="615" y="74" fill="#4ade80" font-size="11" font-weight="700">USB-C / Flash</text>
+        <text x="492" y="182" fill="#fb923c" font-size="11" font-weight="700">915 MHz LoRa RF</text>
+
+        <!-- Node 1: Workstation -->
+        <g class="g-node" onclick="selectNode(0)">
+          <rect class="box" x="20" y="25" width="220" height="120" rx="12" fill="#141824" stroke="#38bdf8" stroke-width="2.5" />
+          <circle cx="240" cy="85" r="6" fill="#38bdf8" />
+          <text x="36" y="50" fill="#38bdf8" font-size="11" font-weight="800">NODE 01 · WORKSTATION</text>
+          <text x="36" y="74" fill="#f3f4f6" font-size="16" font-weight="800">SlateTop AI Rig</text>
+          <text x="36" y="96" fill="#9ca3af" font-size="12">ComfyUI · Blender · OBS</text>
+          <text x="36" y="122" fill="#fb923c" font-size="11" font-weight="700">Click to inspect BoM →</text>
+        </g>
+
+        <!-- Node 2: Edge Hub -->
+        <g class="g-node" onclick="selectNode(1)">
+          <rect class="box" x="360" y="25" width="240" height="120" rx="12" fill="#141824" stroke="#4ade80" stroke-width="2.5" />
+          <circle cx="360" cy="85" r="6" fill="#38bdf8" />
+          <circle cx="600" cy="85" r="6" fill="#4ade80" />
+          <circle cx="480" cy="145" r="6" fill="#fb923c" />
+          <text x="376" y="50" fill="#4ade80" font-size="11" font-weight="800">NODE 02 · 24/7 EDGE HUB</text>
+          <text x="376" y="74" fill="#f3f4f6" font-size="16" font-weight="800">SlatePi + SlateVault</text>
+          <text x="376" y="96" fill="#9ca3af" font-size="12">Pi 5 · X1200 UPS · LiteLLM</text>
+          <text x="376" y="122" fill="#fb923c" font-size="11" font-weight="700">Click to inspect BoM →</text>
+        </g>
+
+        <!-- Node 3: Bench & Print Farm -->
+        <g class="g-node" onclick="selectNode(2)">
+          <rect class="box" x="720" y="25" width="220" height="120" rx="12" fill="#141824" stroke="#f59e0b" stroke-width="2.5" />
+          <circle cx="720" cy="85" r="6" fill="#4ade80" />
+          <text x="736" y="50" fill="#f59e0b" font-size="11" font-weight="800">NODE 03 · PRINT &amp; BENCH</text>
+          <text x="736" y="74" fill="#f3f4f6" font-size="16" font-weight="800">Desktop Factory</text>
+          <text x="736" y="96" fill="#9ca3af" font-size="12">WD19DCS · 3D Printers</text>
+          <text x="736" y="122" fill="#fb923c" font-size="11" font-weight="700">Click to inspect BoM →</text>
+        </g>
+
+        <!-- Node 4: Off-Grid Mesh -->
+        <g class="g-node" onclick="selectNode(3)">
+          <rect class="box" x="310" y="205" width="340" height="72" rx="12" fill="#141824" stroke="#fb923c" stroke-width="2.5" />
+          <circle cx="480" cy="205" r="6" fill="#fb923c" />
+          <text x="328" y="230" fill="#fb923c" font-size="11" font-weight="800">NODE 04 · OFF-GRID LORA &amp; FIELD MESH</text>
+          <text x="328" y="253" fill="#f3f4f6" font-size="15" font-weight="800">MeshCore · WADAMesh T-Deck Plus · Heltec V4</text>
+        </g>
+      </svg>
     </div>
-    <div class="flow">
-      <div class="node selected" onclick="inspectTier(0, this)"><div class="tier">Tier 1 · Heavy Compute</div><h3>Gaming / AI Workstation</h3><div class="part aff"><span class="tag aff">AFFILIATE GEAR</span><ul class="items"><li>RX 9070 XT / RTX 3060+ GPU</li><li>Ryzen 9800X3D + 32GB+ RAM</li><li>Elgato Stream Deck &amp; Cam</li></ul></div><div class="part mfg"><span class="tag mfg">DESKTOP-MANUFACTURED</span><ul class="items"><li>Custom Under-Desk PC Brackets</li><li>3D-Printed Camera &amp; Mic Arms</li></ul></div></div>
-      <div class="node" onclick="inspectTier(1, this)"><div class="tier">Tier 2 · 24/7 Edge Hub</div><h3>Edge AI &amp; Vault NAS</h3><div class="part aff"><span class="tag aff">AFFILIATE GEAR</span><ul class="items"><li>Raspberry Pi 5 (or N100 Mini-PC)</li><li>Geekworm X1200/X1202 UPS</li><li>Dual NVMe SSDs + 27W PSU</li></ul></div><div class="part mfg"><span class="tag mfg">DESKTOP-MANUFACTURED</span><ul class="items"><li>42×42mm Gridfinity UPS Stack</li><li>Active-Airflow Pi + NVMe Case</li></ul></div></div>
-      <div class="node" onclick="inspectTier(2, this)"><div class="tier">Tier 3 · Bench &amp; Print Farm</div><h3>Manufacturing &amp; Flashing</h3><div class="part aff"><span class="tag aff">AFFILIATE GEAR</span><ul class="items"><li>Dell WD19DCS Powered Dock</li><li>Bambu Lab 3D Printer Fleet</li><li>USB-TTL &amp; NVMe Clone Docks</li></ul></div><div class="part mfg"><span class="tag mfg">DESKTOP-MANUFACTURED</span><ul class="items"><li>Custom LoRa Node Enclosures</li><li>T-Deck External SMA Mod Kits</li></ul></div></div>
-      <div class="node" onclick="inspectTier(3, this)"><div class="tier">Tier 4 · Field &amp; Mesh</div><h3>Off-Grid LoRa &amp; Mobile</h3><div class="part aff"><span class="tag aff">AFFILIATE GEAR</span><ul class="items"><li>LilyGO T-Deck Plus &amp; Heltec V4</li><li>915 MHz SMA Whips &amp; Pigtails</li><li>Portable Tablet / Quest 3</li></ul></div><div class="part mfg"><span class="tag mfg">DESKTOP-MANUFACTURED</span><ul class="items"><li>Weather-Sealed Solar Relay Boxes</li><li>1:1 Metric 3D/VR Asset Packs</li></ul></div></div>
+
+    <div class="inspector" id="inspector"></div>
+
+    <div class="starter">
+      <h3 style="margin:0 0 6px;color:var(--edge);font-size:17px;">Gamer Buddy Starter Path ($0–$150 to Build Your Own)</h3>
+      <p style="margin:0;color:var(--muted);font-size:14px;">Already own a gaming GPU and a spare Raspberry Pi? Install Stability Matrix + Blender on your PC, drop Tailscale + Open WebUI + Samba NAS onto your Pi, and print your own Gridfinity + LoRa enclosures.</p>
     </div>
-    <div class="inspector" id="inspector"><h4>Tier 1 Inspector — Gaming / AI Workstation (SlateTop)</h4><p style="margin:0;color:var(--muted);font-size:14.5px;">Runs local <strong>ComfyUI (SDXL Turbo + ControlNet)</strong>, <strong>Blender 5.2</strong>, <strong>Bambu Studio</strong>, and <strong>OBS Studio 33.0.1</strong>. Any gamer buddy with an 8GB–16GB+ VRAM GPU already owns the most expensive part of a FedEWAM node.</p></div>
-    <div class="starter"><h3>Gamer Buddy Starter Path ($0–$150 to Build Your Own)</h3><p style="margin:0;color:var(--muted);font-size:14.5px;">Already have a gaming PC and a spare Raspberry Pi? <strong>1)</strong> Install Stability Matrix + Blender on your gaming rig. <strong>2)</strong> Drop Tailscale + Open WebUI + Samba NAS onto your Pi. <strong>3)</strong> Print your own Gridfinity UPS rack and LoRa node shells—or grab pre-flashed bench drops at <a href="https://toolboxgadgets.com" style="color:var(--edge);font-weight:700;">Toolbox Gadgets</a>.</p></div>
-    <footer><span>© 2026 Garrett Ellis Fox · Maryland, USA</span><span>FedEWAM Open Reference Architecture</span></footer>
+
+    <footer>
+      <span>© 2026 Garrett Ellis Fox · Maryland, USA</span>
+      <span>As an Amazon Associate, I earn from qualifying purchases.</span>
+    </footer>
   </div>
+
   <script>
-    const details = [
-      { title: "Tier 1 Inspector — Gaming / AI Workstation (SlateTop)", body: "Runs local <strong>ComfyUI (SDXL Turbo + ControlNet)</strong>, <strong>Blender 5.2</strong>, <strong>Bambu Studio</strong>, and <strong>OBS Studio 33.0.1</strong>. Any gamer buddy with an 8GB–16GB+ VRAM GPU already owns the most expensive part of a FedEWAM node." },
-      { title: "Tier 2 Inspector — 24/7 Edge AI & Vault NAS (SlatePi)", body: "Always-on ~12W edge node hosting <strong>Tailscale</strong>, <strong>LiteLLM (:4000)</strong>, <strong>Open WebUI (:8080)</strong>, <strong>MongoDB</strong>, and <strong>SlateVault Samba NAS</strong>—housed inside a custom 3D-printed <strong>42×42mm Gridfinity + Geekworm X1200/X1202 UPS</strong> rack." },
-      { title: "Tier 3 Inspector — Bench Flashing & Desktop Print Farm", body: "Uses a self-powered <strong>Dell WD19DCS</strong> dock as a single-plug flashing station for <strong>MeshCore</strong> and <strong>WADAMesh</strong> firmware alongside Bambu 3D printers producing enclosures and custom hardware mods." },
-      { title: "Tier 4 Inspector — Off-Grid 915 MHz LoRa Mesh & Mobile Capture", body: "Extends your network off-grid via <strong>915 MHz MeshCore / Reticulum</strong> nodes (<strong>LilyGO T-Deck Plus</strong> with external SMA whip mod and <strong>Heltec V4</strong>) plus mobile sculpting and spatial room/vehicle capture." }
+    // PASTE YOUR AMAZON SITESTRIPE LINKS HERE ANYTIME:
+    const AFFILIATE_LINKS = {
+      gpu: "https://amazon.com",
+      streamdeck: "https://amazon.com",
+      pi5: "https://amazon.com",
+      ups: "https://amazon.com",
+      dock: "https://amazon.com",
+      tdeck: "https://amazon.com",
+      heltec: "https://amazon.com"
+    };
+
+    const nodes = [
+      {
+        title: "Node 01 Inspector — SlateTop Gaming / AI Workstation",
+        desc: "Runs ComfyUI (SDXL Turbo + ControlNet), Blender 5.2, Bambu Studio, and OBS Studio 33.0.1. Any gamer buddy with an 8GB–16GB+ VRAM GPU already owns the core compute engine.",
+        aff: [ { label: "RX 9070 XT 16GB GPU", url: AFFILIATE_LINKS.gpu }, { label: "Elgato Stream Deck", url: AFFILIATE_LINKS.streamdeck } ],
+        mfg: [ { label: "3D-Printed Under-Desk & Cam Mounts", url: "https://gumroad.com" } ]
+      },
+      {
+        title: "Node 02 Inspector — SlatePi + SlateVault 24/7 Edge Hub",
+        desc: "Always-on ~12W edge server running Tailscale, LiteLLM (:4000), Open WebUI (:8080), MongoDB, and SlateVault NAS inside a custom 3D-printed Gridfinity UPS rack.",
+        aff: [ { label: "Raspberry Pi 5", url: AFFILIATE_LINKS.pi5 }, { label: "Geekworm X1200/X1202 UPS", url: AFFILIATE_LINKS.ups } ],
+        mfg: [ { label: "42×42mm Gridfinity UPS Stack", url: "https://gumroad.com" } ]
+      },
+      {
+        title: "Node 03 Inspector — Bench Flashing & Desktop Print Farm",
+        desc: "Self-powered Dell WD19DCS multi-port dock paired with desktop 3D printers for flashing MeshCore/WADAMesh nodes and manufacturing custom enclosures.",
+        aff: [ { label: "Dell WD19DCS Powered Dock", url: AFFILIATE_LINKS.dock } ],
+        mfg: [ { label: "Shop Bench-Built Hardware Drops", url: "https://toolboxgadgets.com" } ]
+      },
+      {
+        title: "Node 04 Inspector — Off-Grid 915 MHz LoRa & Field Mesh",
+        desc: "Extends your personal mesh off-grid with custom-modded LilyGO T-Deck Plus units (external SMA whip + WADAMesh OS) and 3D-printed MeshCore nodes.",
+        aff: [ { label: "LilyGO T-Deck Plus 915MHz", url: AFFILIATE_LINKS.tdeck }, { label: "Heltec V4 915MHz", url: AFFILIATE_LINKS.heltec } ],
+        mfg: [ { label: "Buy Pre-Flashed MeshCore & T-Deck Mods", url: "https://toolboxgadgets.com" } ]
+      }
     ];
-    function inspectTier(idx, el) { document.querySelectorAll('.node').forEach(n => n.classList.remove('selected')); el.classList.add('selected'); document.getElementById('inspector').innerHTML = `<h4>${details[idx].title}</h4><p style="margin:0;color:var(--muted);font-size:14.5px;">${details[idx].body}</p>`; }
-    function filterParts(type, btn) { document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.querySelectorAll('.part').forEach(p => { p.style.display = (type === 'all' || p.classList.contains(type)) ? 'block' : 'none'; }); }
+
+    function selectNode(i) {
+      const n = nodes[i];
+      const affHtml = n.aff.map(a => `<a class="bom-pill aff" href="${a.url}" target="_blank" rel="noopener">Amazon BoM: ${a.label} ↗</a>`).join('');
+      const mfgHtml = n.mfg.map(m => `<a class="bom-pill mfg" href="${m.url}" target="_blank" rel="noopener">Desktop-Manufactured: ${m.label} ↗</a>`).join('');
+      document.getElementById('inspector').innerHTML = `<h3>${n.title}</h3><p style="margin:0;color:var(--muted);font-size:14.5px;">${n.desc}</p><div class="bom-list">${affHtml}${mfgHtml}</div>`;
+    }
+    selectNode(0);
   </script>
 </body>
 </html>
