@@ -29,6 +29,15 @@
     .starter { background: linear-gradient(135deg, #0f2419, #141824); border: 1px solid #4ade8055; border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; }
     footer { border-top: 1px solid var(--border); padding-top: 18px; color: var(--muted); font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   </style>
+  <script type="module" src="https://googleapis.com">    fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
+      document.getElementById('pedestalGrid').innerHTML = list.map(p => `
+        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
+          <model-viewer src="${p.glb}" alt="${p.title}" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
+          <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
+          <a class="bom-pill mfg" href="${p.storeUrl}" target="_blank" rel="noopener">Get Asset on Foundry ↗</a>
+        </div>`).join('');
+    }).catch(() => {});
+  </script>
 </head>
 <body>
   <div class="wrap">
@@ -121,7 +130,12 @@
 <a class="bom-pill aff" href="https://link.amazon/B0dk6KNFV" target="_blank" rel="noopener">Meta Quest 512GB Virtual Reality ↗</a>
 <a class="bom-pill aff" href="https://link.amazon/B09VLUucL" target="_blank" rel="noopener">Apple iPad Pro 11 inch Landscape ↗</a>
 <a class="bom-pill aff" href="https://link.amazon/B0en3ypx2" target="_blank" rel="noopener">DJI Transmission Transceiver Beginners Batteries ↗</a></div></div>
-<div class="starter">
+    <div class="inspector">
+      <h3>Interactive 3D Artifact Pedestals (.GLB)</h3>
+      <p style="margin:0 0 14px;color:var(--muted);font-size:14px;">Drag to orbit, scroll to zoom—exported directly from Blender via our automated FedEWAM pipeline:</p>
+      <div id="pedestalGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;"></div>
+    </div>
+    <div class="starter">
       <h3 style="margin:0 0 6px;color:var(--edge);font-size:17px;">Gamer Buddy Starter Path ($0–$150 to Build Your Own)</h3>
       <p style="margin:0;color:var(--muted);font-size:14px;">Already own a gaming GPU and a spare Raspberry Pi? Install Stability Matrix + Blender on your PC, drop Tailscale + Open WebUI + Samba NAS onto your Pi, and print your own Gridfinity + LoRa enclosures.</p>
     </div>
@@ -178,8 +192,17 @@
       document.getElementById('inspector').innerHTML = `<h3>${n.title}</h3><p style="margin:0;color:var(--muted);font-size:14.5px;">${n.desc}</p><div class="bom-list">${affHtml}${mfgHtml}</div>`;
     }
     selectNode(0);
+      fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
+      document.getElementById('pedestalGrid').innerHTML = list.map(p => `
+        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
+          <model-viewer src="${p.glb}" alt="${p.title}" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
+          <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
+          <a class="bom-pill mfg" href="${p.storeUrl}" target="_blank" rel="noopener">Get Asset on Foundry ↗</a>
+        </div>`).join('');
+    }).catch(() => {});
   </script>
 </body>
 </html>
+
 
 
