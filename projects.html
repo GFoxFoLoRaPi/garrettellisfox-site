@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEF Cyberpunk Museum — Projects &amp; Exhibit Wings</title>
+  <style>
+    :root { --bg: #0b0d13; --stone: #131722; --gold: #d4af37; --cyan: #38bdf8; --flame: #ff5a1f; --text: #f3f4f6; --muted: #9ca3af; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6;
+      background: radial-gradient(circle at 50% 0%, #1e1b2e 0%, var(--bg) 62%);
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 26px 20px 72px; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+      border: 1.5px solid #d4af3766; background: rgba(19,23,34,0.9); border-radius: 12px;
+      padding: 12px 18px; margin-bottom: 26px; box-shadow: 0 0 24px rgba(56,189,248,0.12);
+    }
+    .topbar a, .audio-btn {
+      color: var(--text); text-decoration: none; font-weight: 700; font-size: 13px;
+      background: #1a2030; border: 1px solid #38bdf866; padding: 7px 14px; border-radius: 8px; cursor: pointer;
+    }
+    .rotunda {
+      text-align: center; border: 2px solid var(--gold); border-radius: 18px; padding: 28px 22px;
+      background: linear-gradient(180deg, #171c2b, #0f131d); margin-bottom: 32px;
+      box-shadow: 0 0 40px rgba(255,90,31,0.16), inset 0 0 30px rgba(212,175,55,0.1);
+    }
+    .lantern {
+      display: inline-block; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--flame);
+      background: radial-gradient(circle, #ff5a1f33, #131722); color: #ffb703; font-weight: 900;
+      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+      box-shadow: 0 0 22px rgba(255,90,31,0.5);
+    }
+    h1 { font-family: Georgia, serif; font-size: clamp(28px, 4.5vw, 40px); margin: 6px 0 8px; color: #fff8e7; }
+    .wing-title { font-family: Georgia, serif; color: var(--gold); font-size: 20px; margin: 28px 0 12px; border-bottom: 1px solid #d4af3744; padding-bottom: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .exhibit {
+      background: var(--stone); border: 1.5px solid #2a3147; border-radius: 14px; padding: 18px;
+      transition: transform 0.14s ease, border-color 0.14s ease; cursor: pointer;
+    }
+    .exhibit:hover { transform: translateY(-3px); border-color: var(--cyan); }
+    .exhibit.locked { border-style: dashed; border-color: #f59e0b66; background: #10131c; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 2px 9px; border-radius: 999px; margin-bottom: 8px; }
+    .tag.room { background: #0c4a6e; color: var(--cyan); }
+    .tag.pedestal { background: #431407; color: #fb923c; }
+    .tag.frame { background: #3b2f0b; color: var(--gold); }
+    .tag.lock { background: #27272a; color: #fbbf24; }
+    .exhibit h3 { margin: 0 0 6px; font-size: 17px; }
+    .exhibit p { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; }
+    .exhibit a { color: var(--cyan); font-size: 13px; font-weight: 700; text-decoration: none; }
+    .vault-msg { margin-top: 12px; padding: 12px 16px; border-radius: 10px; background: #181c29; border: 1px solid #fbbf2466; color: #fde68a; font-size: 13.5px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a href="index.html">← Back to FedEWAM Rotunda</a>
+      <span style="font-size:12.5px;color:var(--gold);font-weight:700;">AGENT OVERRIDE ACTIVE: SlateTop · SlatePi · SlatePad</span>
+      <button class="audio-btn" id="audioToggle" onclick="toggleAudio()">🔊 Museum Audio: Off</button>
+    </div>
+
+    <section class="rotunda">
+      <div class="lantern">🦊🔥 Fox &amp; Flame Foundry · Central Flaming Lantern</div>
+      <h1>The Cyberpunk-Hacked Classical Museum</h1>
+      <p style="max-width:720px;margin:0 auto;color:var(--muted);font-size:15px;">An old-world hall of stone &amp; brass taken over by a cyberpunk builder and his merry AI agents—housing open-source GitHub rooms, 3D-printed pedestals, framed web worlds, and locked R&amp;D vaults.</p>
+    </section>
+    <h2 class="wing-title">🏛️ East Wing · Dedicated GitHub Rooms</h2>
+    <div class="grid">
+      <div class="exhibit" onmouseenter="chime(520)">
+        <span class="tag room">EW01 · GitHub Room</span>
+        <h3>915 MHz LoRa &amp; Off-Grid Mesh</h3>
+        <p>MeshCore &amp; WADAMesh firmware builds, modded LilyGO T-Deck Plus external SMA whips, Heltec V4 nodes &amp; field antennas.</p>
+        <a href="index.html">Inspect LoRa BoM &amp; Noodles →</a>
+      </div>
+      <div class="exhibit" onmouseenter="chime(580)">
+        <span class="tag room">EW02 · GitHub Room</span>
+        <h3>PEV / VESC &amp; Onewheel Lab</h3>
+        <p>Custom VESC controller tuning, Onewheel rail/footpad/battery upgrades, and 3D-printed fenders, stands &amp; trail armor.</p>
+        <a href="https://github.com" target="_blank" rel="noopener">View GitHub (@GFoxFoLoRaPi) ↗</a>
+      </div>
+      <div class="exhibit" onmouseenter="chime(640)">
+        <span class="tag room">EW03 · GitHub Room</span>
+        <h3>Looloo — Off-Grid Camper Van</h3>
+        <p>1:1 metric CAD &amp; Blender camper conversion kit (FF-3D-002), 16-gal water tank layout, and off-grid solar power systems.</p>
+        <a href="https://gumroad.com" target="_blank" rel="noopener">View Build Kit on Foundry ↗</a>
+      </div>
+    </div>
+
+    <h2 class="wing-title">🗿 West Wing · 3D Pedestals &amp; Wall Picture Frames</h2>
+    <div class="grid">
+      <div class="exhibit" onmouseenter="chime(480)">
+        <span class="tag pedestal">Pedestal Plinths · 3D Models</span>
+        <h3>Virtual 90s Garage &amp; VR Worlds</h3>
+        <p>Quest-ready .GLB/.FBX packs (FF-3D-001 through FF-3D-005) plus Gridfinity Pi 5 + Geekworm X1200/X1202 UPS racks.</p>
+        <a href="https://gumroad.com" target="_blank" rel="noopener">Browse Foundry Pedestals ↗</a>
+      </div>
+      <div class="exhibit" onmouseenter="chime(510)">
+        <span class="tag frame">Picture Frame · Live Site</span>
+        <h3>Toolbox Gadgets (90s Garage)</h3>
+        <p>Wall-mounted hologram portal to our Retro-90s closed-garage workbench, live streams &amp; bench hardware drops.</p>
+        <a href="https://toolboxgadgets.com" target="_blank" rel="noopener">Enter Toolbox Gadgets ↗</a>
+      </div>
+      <div class="exhibit" onmouseenter="chime(540)">
+        <span class="tag frame">Picture Frame · Live Site</span>
+        <h3>The Primitive Fox (Field Sketch)</h3>
+        <p>Framed graphite-and-firelight study dedicated to zero-electronics bushcraft, primitive shelters &amp; forest camp craft.</p>
+        <a href="https://theprimitivefox.com" target="_blank" rel="noopener">Enter The Primitive Fox ↗</a>
+      </div>
+    </div>
+
+    <h2 class="wing-title">🔐 North Wing · Locked Mystery Vaults (Click Keypad)</h2>
+    <div class="grid">
+      <div class="exhibit locked" onclick="unlockHint('VAULT NW-01 [KEYPAD LOCKED]: High-torque custom VESC powertrain & trail telemetry logging in progress...')">
+        <span class="tag lock">🔒 Locked Door · NW-01</span>
+        <h3>Project: Night-Rider VESC</h3>
+        <p>Frosted glass silhouette. Click keypad to scan encrypted agent teaser &amp; bench parts list.</p>
+      </div>
+      <div class="exhibit locked" onclick="unlockHint('VAULT NW-02 [KEYPAD LOCKED]: Solar-powered 915 MHz Reticulum hilltop repeater mast & weatherproof enclosure...')">
+        <span class="tag lock">🔒 Locked Door · NW-02</span>
+        <h3>Project: Sky-Beacon Relay</h3>
+        <p>Heavy brass lock with cyan hologram seal. Click keypad for classified field specs.</p>
+      </div>
+      <div class="exhibit locked" onclick="unlockHint('VAULT NW-03 [KEYPAD LOCKED]: Full multiplayer WebXR Virtual 90s Garage with playable CRT easter eggs...')">
+        <span class="tag lock">🔒 Locked Door · NW-03</span>
+        <h3>Project: Arcade Garage VR</h3>
+        <p>Behind velvet rope. Click keypad to preview upcoming WebXR &amp; Quest world release.</p>
+      </div>
+    </div>
+    <div class="vault-msg" id="vaultMsg"></div>
+  </div>
+
+  <script>
+    let ctx = null, osc = null, audioOn = false;
+    function toggleAudio() {
+      const btn = document.getElementById('audioToggle');
+      if (!audioOn) {
+        ctx = new (window.AudioContext || window.webkitAudioContext)();
+        osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle'; osc.frequency.value = 110; gain.gain.value = 0.03;
+        osc.connect(gain); gain.connect(ctx.destination); osc.start();
+        audioOn = true; btn.textContent = '🔊 Museum Audio: On';
+      } else {
+        if (osc) osc.stop(); audioOn = false; btn.textContent = '🔊 Museum Audio: Off';
+      }
+    }
+    function chime(freq) {
+      if (!audioOn || !ctx) return;
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = 'sine'; o.frequency.value = freq; g.gain.value = 0.025;
+      o.connect(g); g.connect(ctx.destination); o.start();
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+      o.stop(ctx.currentTime + 0.19);
+    }
+    function unlockHint(msg) {
+      chime(320);
+      const box = document.getElementById('vaultMsg');
+      box.style.display = 'block'; box.textContent = msg;
+    }
+  </script>
+</body>
+</html>
