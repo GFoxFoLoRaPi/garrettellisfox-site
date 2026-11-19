@@ -5,51 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GEF Cyberpunk Museum — Projects &amp; Exhibit Wings</title>
   <style>
-    :root { --bg: #0b0d13; --stone: #131722; --gold: #d4af37; --cyan: #38bdf8; --flame: #ff5a1f; --text: #f3f4f6; --muted: #9ca3af; }
+    :root { --bg: #18130e; --stone: #241d15; --parchment: #f4ead5; --gold: #d4af37; --cyan: #00f5d4; --magenta: #ff2a85; --flame: #ff5a1f; --text: #fdf8ee; --muted: #d6cbb8; }
     * { box-sizing: border-box; }
     body {
-      margin: 0; font-family: system-ui, -apple-system, sans-serif; color: var(--text); line-height: 1.6;
-      background: radial-gradient(circle at 50% 0%, #1e1b2e 0%, var(--bg) 62%);
+      margin: 0; font-family: Georgia, "Times New Roman", serif; color: var(--text); line-height: 1.6;
+      background-color: var(--bg);
+      background-image:
+        repeating-linear-gradient(90deg, rgba(212,175,55,0.06) 0px, rgba(212,175,55,0.06) 2px, transparent 2px, transparent 90px),
+        radial-gradient(circle at 50% 12%, rgba(255,90,31,0.22) 0%, rgba(0,245,212,0.08) 45%, #120e0a 85%);
     }
     .wrap { max-width: 1100px; margin: 0 auto; padding: 26px 20px 72px; }
     .topbar {
       display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      border: 1.5px solid #d4af3766; background: rgba(19,23,34,0.9); border-radius: 12px;
-      padding: 12px 18px; margin-bottom: 26px; box-shadow: 0 0 24px rgba(56,189,248,0.12);
+      border: 2px solid var(--magenta); background: rgba(20,16,24,0.92); border-radius: 8px;
+      padding: 12px 18px; margin-bottom: 26px; box-shadow: 4px 4px 0 var(--cyan); font-family: system-ui, sans-serif;
     }
     .topbar a, .audio-btn {
-      color: var(--text); text-decoration: none; font-weight: 700; font-size: 13px;
-      background: #1a2030; border: 1px solid #38bdf866; padding: 7px 14px; border-radius: 8px; cursor: pointer;
+      color: #0b0d13; text-decoration: none; font-weight: 800; font-size: 12.5px;
+      background: var(--cyan); border: 2px solid #0b0d13; padding: 7px 14px; border-radius: 6px; cursor: pointer;
     }
     .rotunda {
-      text-align: center; border: 2px solid var(--gold); border-radius: 18px; padding: 28px 22px;
-      background: linear-gradient(180deg, #171c2b, #0f131d); margin-bottom: 32px;
-      box-shadow: 0 0 40px rgba(255,90,31,0.16), inset 0 0 30px rgba(212,175,55,0.1);
+      text-align: center; border: 4px double var(--gold); border-radius: 14px; padding: 30px 22px;
+      background: linear-gradient(180deg, #2b2116, #1a140e); margin-bottom: 32px;
+      box-shadow: 0 0 45px rgba(255,90,31,0.28), inset 0 0 28px rgba(212,175,55,0.18);
     }
     .lantern {
-      display: inline-block; padding: 8px 18px; border-radius: 999px; border: 1.5px solid var(--flame);
-      background: radial-gradient(circle, #ff5a1f33, #131722); color: #ffb703; font-weight: 900;
-      font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
-      box-shadow: 0 0 22px rgba(255,90,31,0.5);
+      display: inline-block; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--flame);
+      background: radial-gradient(circle, #ff5a1f55, #1f1710); color: #ffd166; font-family: system-ui, sans-serif;
+      font-weight: 900; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
+      box-shadow: 0 0 28px rgba(255,90,31,0.75);
     }
-    h1 { font-family: Georgia, serif; font-size: clamp(28px, 4.5vw, 40px); margin: 6px 0 8px; color: #fff8e7; }
-    .wing-title { font-family: Georgia, serif; color: var(--gold); font-size: 20px; margin: 28px 0 12px; border-bottom: 1px solid #d4af3744; padding-bottom: 6px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    h1 { font-family: Georgia, serif; font-size: clamp(28px, 4.5vw, 42px); margin: 6px 0 8px; color: #fff8e7; text-shadow: 2px 2px 0 #ff2a8566; }
+    .wing-title { font-family: Georgia, serif; color: var(--gold); font-size: 21px; margin: 28px 0 14px; border-bottom: 2px double var(--gold); padding-bottom: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
     .exhibit {
-      background: var(--stone); border: 1.5px solid #2a3147; border-radius: 14px; padding: 18px;
-      transition: transform 0.14s ease, border-color 0.14s ease; cursor: pointer;
+      background: var(--parchment); color: #1f1912; border: 3px double #8c6d1f; border-radius: 10px; padding: 18px;
+      box-shadow: 5px 5px 0 var(--cyan); transition: transform 0.14s ease, box-shadow 0.14s ease; cursor: pointer;
     }
-    .exhibit:hover { transform: translateY(-3px); border-color: var(--cyan); }
-    .exhibit.locked { border-style: dashed; border-color: #f59e0b66; background: #10131c; }
-    .tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 2px 9px; border-radius: 999px; margin-bottom: 8px; }
-    .tag.room { background: #0c4a6e; color: var(--cyan); }
-    .tag.pedestal { background: #431407; color: #fb923c; }
-    .tag.frame { background: #3b2f0b; color: var(--gold); }
-    .tag.lock { background: #27272a; color: #fbbf24; }
-    .exhibit h3 { margin: 0 0 6px; font-size: 17px; }
-    .exhibit p { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; }
-    .exhibit a { color: var(--cyan); font-size: 13px; font-weight: 700; text-decoration: none; }
-    .vault-msg { margin-top: 12px; padding: 12px 16px; border-radius: 10px; background: #181c29; border: 1px solid #fbbf2466; color: #fde68a; font-size: 13.5px; display: none; }
+    .exhibit:hover { transform: translate(-2px, -3px); box-shadow: 7px 7px 0 var(--magenta); }
+    .exhibit.locked { background: #1c1924; color: #f3f4f6; border: 2px dashed var(--magenta); box-shadow: 5px 5px 0 #fbbf24; }
+    .exhibit.locked p { color: #cbd5e1; }
+    .tag { display: inline-block; font-family: system-ui, sans-serif; font-size: 11px; font-weight: 900; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 8px; }
+    .tag.room { background: #18130e; color: var(--cyan); border: 1px solid var(--cyan); }
+    .tag.pedestal { background: #7c2d12; color: #ffedd5; }
+    .tag.frame { background: #78350f; color: #fef3c7; }
+    .tag.lock { background: var(--magenta); color: #ffffff; }
+    .exhibit h3 { margin: 0 0 6px; font-size: 18px; }
+    .exhibit p { margin: 0 0 10px; color: #4a3f32; font-size: 14px; font-family: system-ui, sans-serif; }
+    .exhibit a { color: #0f766e; font-family: system-ui, sans-serif; font-size: 13px; font-weight: 800; text-decoration: none; }
+    .vault-msg { margin-top: 14px; padding: 14px 16px; border-radius: 8px; background: #14111d; border: 2px solid var(--cyan); color: var(--cyan); font-family: monospace; font-size: 13.5px; display: none; }
   </style>
 </head>
 <body>
@@ -161,3 +165,4 @@
   </script>
 </body>
 </html>
+
