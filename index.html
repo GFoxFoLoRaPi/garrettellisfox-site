@@ -3,73 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garrett Ellis Fox — FedEWAM Architecture &amp; Engineering Archive</title>
+  <title>Garrett Ellis Fox — FedEWAM Interactive Architecture</title>
   <style>
-    :root { --bg: #18130e; --stone: #241d15; --parchment: #f4ead5; --gold: #d4af37; --cyan: #00f5d4; --magenta: #ff2a85; --flame: #ff5a1f; --text: #fdf8ee; --muted: #d6cbb8; }
+    :root { --bg: #0c0e14; --card: #141824; --border: #252b3d; --text: #f3f4f6; --muted: #9ca3af; --aff: #38bdf8; --mfg: #fb923c; --edge: #4ade80; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: Georgia, "Times New Roman", serif; color: var(--text); line-height: 1.6;
-      background-color: var(--bg);
-      background-image:
-        repeating-linear-gradient(90deg, rgba(212,175,55,0.06) 0px, rgba(212,175,55,0.06) 2px, transparent 2px, transparent 90px),
-        radial-gradient(circle at 50% 12%, rgba(255,90,31,0.22) 0%, rgba(0,245,212,0.08) 45%, #120e0a 85%);
-    }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 26px 20px 72px; }
-    .topbar {
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-      border: 2px solid var(--magenta); background: rgba(20,16,24,0.92); border-radius: 8px;
-      padding: 12px 18px; margin-bottom: 26px; box-shadow: 4px 4px 0 var(--cyan); font-family: system-ui, sans-serif;
-    }
-    .topbar a, .audio-btn {
-      color: #0b0d13; text-decoration: none; font-weight: 800; font-size: 12.5px;
-      background: var(--cyan); border: 2px solid #0b0d13; padding: 7px 14px; border-radius: 6px; cursor: pointer;
-    }
-    .rotunda {
-      text-align: center; border: 4px double var(--gold); border-radius: 14px; padding: 30px 22px;
-      background: linear-gradient(180deg, #2b2116, #1a140e); margin-bottom: 32px;
-      box-shadow: 0 0 45px rgba(255,90,31,0.28), inset 0 0 28px rgba(212,175,55,0.18);
-    }
-    .lantern {
-      display: inline-block; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--flame);
-      background: radial-gradient(circle, #ff5a1f55, #1f1710); color: #ffd166; font-family: system-ui, sans-serif;
-      font-weight: 900; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px;
-      box-shadow: 0 0 28px rgba(255,90,31,0.75);
-    }
-    h1 { font-family: Georgia, serif; font-size: clamp(28px, 4.5vw, 42px); margin: 6px 0 8px; color: #fff8e7; text-shadow: 2px 2px 0 #ff2a8566; }
-    .wing-title { font-family: Georgia, serif; color: var(--gold); font-size: 21px; margin: 28px 0 14px; border-bottom: 2px double var(--gold); padding-bottom: 6px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .exhibit {
-      background: var(--parchment); color: #1f1912; border: 3px double #8c6d1f; border-radius: 10px; padding: 18px;
-      box-shadow: 5px 5px 0 var(--cyan); transition: transform 0.14s ease, box-shadow 0.14s ease; cursor: pointer;
-    }
-    .exhibit:hover { transform: translate(-2px, -3px); box-shadow: 7px 7px 0 var(--magenta); }
-    .exhibit.locked { background: #1c1924; color: #f3f4f6; border: 2px dashed var(--magenta); box-shadow: 5px 5px 0 #fbbf24; }
-    .exhibit.locked p { color: #cbd5e1; }
-    .tag { display: inline-block; font-family: system-ui, sans-serif; font-size: 11px; font-weight: 900; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 8px; }
-    .tag.room { background: #18130e; color: var(--cyan); border: 1px solid var(--cyan); }
-    .tag.pedestal { background: #7c2d12; color: #ffedd5; }
-    .tag.frame { background: #78350f; color: #fef3c7; }
-    .tag.lock { background: var(--magenta); color: #ffffff; }
-    .exhibit h3 { margin: 0 0 6px; font-size: 18px; }
-    .exhibit p { margin: 0 0 10px; color: #4a3f32; font-size: 14px; font-family: system-ui, sans-serif; }
-    .exhibit a { color: #0f766e; font-family: system-ui, sans-serif; font-size: 13px; font-weight: 800; text-decoration: none; }
-    .vault-msg { margin-top: 14px; padding: 14px 16px; border-radius: 8px; background: #14111d; border: 2px solid var(--cyan); color: var(--cyan); font-family: monospace; font-size: 13.5px; display: none; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 68px; }
+    header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 28px; }
+    .role { color: var(--aff); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    h1 { font-size: clamp(28px, 5vw, 42px); margin: 0 0 10px; line-height: 1.15; }
+    .bio { max-width: 740px; color: var(--muted); font-size: 16px; margin: 0 0 18px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .links a { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 13.5px; font-weight: 600; }
+    .links a:hover { border-color: var(--aff); }
+    .graph-box { background: #0f131d; border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin-bottom: 24px; overflow-x: auto; }
+    svg.noodles { width: 100%; min-width: 760px; height: auto; display: block; }
+    .g-node { cursor: pointer; transition: opacity 0.15s ease; }
+    .g-node:hover rect.box { stroke: #38bdf8; stroke-width: 3; }
+    .inspector { background: #101522; border: 1px solid #38bdf866; border-radius: 14px; padding: 22px 24px; margin-bottom: 26px; }
+    .inspector h3 { margin: 0 0 8px; color: var(--aff); font-size: 18px; }
+    .bom-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .bom-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; border: 1px solid var(--border); }
+    .bom-pill.aff { background: #0c4a6e; color: var(--aff); border-color: #38bdf855; }
+    .bom-pill.mfg { background: #431407; color: var(--mfg); border-color: #fb923c55; }
+    .starter { background: linear-gradient(135deg, #0f2419, #141824); border: 1px solid #4ade8055; border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; }
+    footer { border-top: 1px solid var(--border); padding-top: 18px; color: var(--muted); font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <span style="font-family:Georgia,serif;font-weight:700;color:#ffd166;">GARRETT ELLIS FOX · MUSEUM &amp; LAB</span>
-      <span style="font-size:12.5px;color:var(--gold);font-weight:700;">AGENT OVERRIDE ACTIVE: SlateTop · SlatePi · SlatePad</span>
-      <button class="audio-btn" id="audioToggle" onclick="toggleAudio()">🔊 Museum Audio: Off</button>
-    </div>
-
-    <section class="rotunda">
-      <div class="lantern">🦊🔥 Fox &amp; Flame Foundry · Central Flaming Lantern</div>
+    <header>
+      <div class="role">Co-Founder &amp; CEO · Fox &amp; Flame Foundry</div>
       <h1>Garrett Ellis Fox</h1>
-      <p style="max-width:720px;margin:0 auto;color:var(--muted);font-size:15px;">Systems builder, hardware prototyper, and architect of the <strong>Federated Edge-to-Workstation Agentic Mesh (FedEWAM)</strong>—explore active engineering wings, open-source repositories, 3D-manufactured artifacts, and tested field hardware.</p>
-    </section>
-<div class="graph-box">
+      <p class="bio">Architect of the <strong>Federated Edge-to-Workstation Agentic Mesh (FedEWAM)</strong>—click any node in the interactive graph below to inspect the off-the-shelf gear and desktop-manufactured 3D parts behind each tier.</p>
+      <div class="links">
+        <a href="https://gumroad.com" target="_blank" rel="noopener">Fox &amp; Flame Foundry ↗</a>
+        <a href="https://toolboxgadgets.com" target="_blank" rel="noopener">Toolbox Gadgets ↗</a>
+        <a href="https://theprimitivefox.com" target="_blank" rel="noopener">The Primitive Fox ↗</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </header>
+    <div class="graph-box">
       <svg class="noodles" viewBox="0 0 960 290" xmlns="http://w3.org">
         <!-- Curved Noodles -->
         <path d="M 240 85 C 300 85, 300 85, 360 85" stroke="#38bdf8" stroke-width="3.5" fill="none" />
@@ -122,71 +96,8 @@
     </div>
 
     <div class="inspector" id="inspector"></div>
-    <h2 class="wing-title">🏛️ East Wing · Dedicated GitHub Rooms</h2>
-    <div class="grid">
-      <div class="exhibit" onmouseenter="chime(520)">
-        <span class="tag room">EW01 · GitHub Room</span>
-        <h3>915 MHz LoRa &amp; Off-Grid Mesh</h3>
-        <p>MeshCore &amp; WADAMesh firmware builds, modded LilyGO T-Deck Plus external SMA whips, Heltec V4 nodes &amp; field antennas.</p>
-        <a href="index.html">Inspect LoRa BoM &amp; Noodles →</a>
-      </div>
-      <div class="exhibit" onmouseenter="chime(580)">
-        <span class="tag room">EW02 · GitHub Room</span>
-        <h3>PEV / VESC &amp; Onewheel Lab</h3>
-        <p>Custom VESC controller tuning, Onewheel rail/footpad/battery upgrades, and 3D-printed fenders, stands &amp; trail armor.</p>
-        <a href="https://github.com" target="_blank" rel="noopener">View GitHub (@GFoxFoLoRaPi) ↗</a>
-      </div>
-      <div class="exhibit" onmouseenter="chime(640)">
-        <span class="tag room">EW03 · GitHub Room</span>
-        <h3>Looloo — Off-Grid Camper Van</h3>
-        <p>1:1 metric CAD &amp; Blender camper conversion kit (FF-3D-002), 16-gal water tank layout, and off-grid solar power systems.</p>
-        <a href="https://gumroad.com" target="_blank" rel="noopener">View Build Kit on Foundry ↗</a>
-      </div>
-    </div>
 
-    <h2 class="wing-title">🗿 West Wing · 3D Pedestals &amp; Wall Picture Frames</h2>
-    <div class="grid">
-      <div class="exhibit" onmouseenter="chime(480)">
-        <span class="tag pedestal">Pedestal Plinths · 3D Models</span>
-        <h3>Virtual 90s Garage &amp; VR Worlds</h3>
-        <p>Quest-ready .GLB/.FBX packs (FF-3D-001 through FF-3D-005) plus Gridfinity Pi 5 + Geekworm X1200/X1202 UPS racks.</p>
-        <a href="https://gumroad.com" target="_blank" rel="noopener">Browse Foundry Pedestals ↗</a>
-      </div>
-      <div class="exhibit" onmouseenter="chime(510)">
-        <span class="tag frame">Picture Frame · Live Site</span>
-        <h3>Toolbox Gadgets (90s Garage)</h3>
-        <p>Wall-mounted hologram portal to our Retro-90s closed-garage workbench, live streams &amp; bench hardware drops.</p>
-        <a href="https://toolboxgadgets.com" target="_blank" rel="noopener">Enter Toolbox Gadgets ↗</a>
-      </div>
-      <div class="exhibit" onmouseenter="chime(540)">
-        <span class="tag frame">Picture Frame · Live Site</span>
-        <h3>The Primitive Fox (Field Sketch)</h3>
-        <p>Framed graphite-and-firelight study dedicated to zero-electronics bushcraft, primitive shelters &amp; forest camp craft.</p>
-        <a href="https://theprimitivefox.com" target="_blank" rel="noopener">Enter The Primitive Fox ↗</a>
-      </div>
-    </div>
-
-    <h2 class="wing-title">🔐 North Wing · Locked Mystery Vaults (Click Keypad)</h2>
-    <div class="grid">
-      <div class="exhibit locked" onclick="unlockHint('VAULT NW-01 [KEYPAD LOCKED]: High-torque custom VESC powertrain & trail telemetry logging in progress...')">
-        <span class="tag lock">🔒 Locked Door · NW-01</span>
-        <h3>Project: Night-Rider VESC</h3>
-        <p>Frosted glass silhouette. Click keypad to scan encrypted agent teaser &amp; bench parts list.</p>
-      </div>
-      <div class="exhibit locked" onclick="unlockHint('VAULT NW-02 [KEYPAD LOCKED]: Solar-powered 915 MHz Reticulum hilltop repeater mast & weatherproof enclosure...')">
-        <span class="tag lock">🔒 Locked Door · NW-02</span>
-        <h3>Project: Sky-Beacon Relay</h3>
-        <p>Heavy brass lock with cyan hologram seal. Click keypad for classified field specs.</p>
-      </div>
-      <div class="exhibit locked" onclick="unlockHint('VAULT NW-03 [KEYPAD LOCKED]: Full multiplayer WebXR Virtual 90s Garage with playable CRT easter eggs...')">
-        <span class="tag lock">🔒 Locked Door · NW-03</span>
-        <h3>Project: Arcade Garage VR</h3>
-        <p>Behind velvet rope. Click keypad to preview upcoming WebXR &amp; Quest world release.</p>
-      </div>
-    </div>
-    <div class="vault-msg" id="vaultMsg"></div>
-<h2 class="wing-title">⚙️ Museum Armory · Verified Field &amp; Bench BoM</h2>
-<div class="inspector"><h3>Verified Field, LoRa &amp; Workbench Gear BoM (24 Tested Parts)</h3><p style="margin:0;color:var(--muted);font-size:14px;">Exact components ordered and tested across our bench, NAS, and off-grid mesh builds:</p><div class="bom-list"><a class="bom-pill aff" href="https://link.amazon/B0iEkXX9e" target="_blank" rel="noopener">Amazon Gear (B0FSTD4BYM) ↗</a>
+    <div class="inspector"><h3>Verified Field, LoRa &amp; Workbench Gear BoM (24 Tested Parts)</h3><p style="margin:0;color:var(--muted);font-size:14px;">Exact components ordered and tested across our bench, NAS, and off-grid mesh builds:</p><div class="bom-list"><a class="bom-pill aff" href="https://link.amazon/B0iEkXX9e" target="_blank" rel="noopener">Amazon Gear (B0FSTD4BYM) ↗</a>
 <a class="bom-pill aff" href="https://link.amazon/B0c5uoIfq" target="_blank" rel="noopener">Amazon Gear (B0D29JTYPK) ↗</a>
 <a class="bom-pill aff" href="https://link.amazon/B0hqe42hu" target="_blank" rel="noopener">Amazon Gear (B0F1FHHH5X) ↗</a>
 <a class="bom-pill aff" href="https://link.amazon/B04qwLpdJ" target="_blank" rel="noopener">Amazon Gear (B0GFN7ZS6M) ↗</a>
@@ -214,38 +125,15 @@
       <h3 style="margin:0 0 6px;color:var(--edge);font-size:17px;">Gamer Buddy Starter Path ($0–$150 to Build Your Own)</h3>
       <p style="margin:0;color:var(--muted);font-size:14px;">Already own a gaming GPU and a spare Raspberry Pi? Install Stability Matrix + Blender on your PC, drop Tailscale + Open WebUI + Samba NAS onto your Pi, and print your own Gridfinity + LoRa enclosures.</p>
     </div>
+
+    <footer>
+      <span>© 2026 Garrett Ellis Fox · Maryland, USA</span>
+      <span>As an Amazon Associate, I earn from qualifying purchases.</span>
+    </footer>
   </div>
 
   <script>
-    let ctx = null, osc = null, audioOn = false;
-    function toggleAudio() {
-      const btn = document.getElementById('audioToggle');
-      if (!audioOn) {
-        ctx = new (window.AudioContext || window.webkitAudioContext)();
-        osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle'; osc.frequency.value = 110; gain.gain.value = 0.03;
-        osc.connect(gain); gain.connect(ctx.destination); osc.start();
-        audioOn = true; btn.textContent = '🔊 Museum Audio: On';
-      } else {
-        if (osc) osc.stop(); audioOn = false; btn.textContent = '🔊 Museum Audio: Off';
-      }
-    }
-    function chime(freq) {
-      if (!audioOn || !ctx) return;
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = 'sine'; o.frequency.value = freq; g.gain.value = 0.025;
-      o.connect(g); g.connect(ctx.destination); o.start();
-      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
-      o.stop(ctx.currentTime + 0.19);
-    }
-    function unlockHint(msg) {
-      chime(320);
-      const box = document.getElementById('vaultMsg');
-      box.style.display = 'block'; box.textContent = msg;
-    }
-  
-// PASTE YOUR AMAZON SITESTRIPE LINKS HERE ANYTIME:
+    // PASTE YOUR AMAZON SITESTRIPE LINKS HERE ANYTIME:
     const AFFILIATE_LINKS = {
       gpu: "https://amazon.com",
       streamdeck: "https://amazon.com",
@@ -290,10 +178,8 @@
       document.getElementById('inspector').innerHTML = `<h3>${n.title}</h3><p style="margin:0;color:var(--muted);font-size:14.5px;">${n.desc}</p><div class="bom-list">${affHtml}${mfgHtml}</div>`;
     }
     selectNode(0);
-  
-</script>
+  </script>
 </body>
 </html>
-
 
 
