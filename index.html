@@ -29,14 +29,18 @@
     .starter { background: linear-gradient(135deg, #0f2419, #141824); border: 1px solid #4ade8055; border-radius: 14px; padding: 20px 24px; margin-bottom: 32px; }
     footer { border-top: 1px solid var(--border); padding-top: 18px; color: var(--muted); font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   </style>
-  <script type="module" src="https://googleapis.com">    fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
-      document.getElementById('pedestalGrid').innerHTML = (Array.isArray(list) ? list : [list]).map(p => `
-        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
-          <model-viewer src="${p.glb}" alt="${p.title}" src="${p.glb}" poster="${p.thumb}" environment-image="neutral" exposure="1.3" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
-          <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
+  <script type="module" src="https://googleapis.com">        fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
+      const items = Array.isArray(list) ? list : [list];
+      document.getElementById('pedestalGrid').innerHTML = items.map(p => `
+        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:16px;">
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:14px;align-items:center;margin-bottom:12px;">
+            <img src="${p.thumb}" alt="${p.title}" style="width:160px;height:160px;object-fit:cover;border-radius:8px;border:1px solid #252b3d;" />
+            <model-viewer src="${p.glb}" poster="${p.thumb}" alt="${p.title}" camera-controls auto-rotate camera-orbit="35deg 70deg auto" environment-image="neutral" exposure="1.4" shadow-intensity="1" style="width:100%;height:260px;background:#090b10;border-radius:8px;"></model-viewer>
+          </div>
+          <div style="font-weight:800;font-size:15px;margin-bottom:8px;">${p.title}</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;"><a class="bom-pill mfg" href="${p.gumroadUrl}" target="_blank" rel="noopener">Gumroad $5 ↗</a><a class="bom-pill mfg" href="${p.payhipUrl}" target="_blank" rel="noopener">Payhip $5 ↗</a><a class="bom-pill mfg" href="${p.jinxxyUrl}" target="_blank" rel="noopener">Jinxxy $5 ↗</a></div>
         </div>`).join('');
-    }).catch(() => {});
+    });
   </script>
 </head>
 <body>
@@ -170,17 +174,22 @@
       document.getElementById('inspector').innerHTML = `<h3>${n.title}</h3><p style="margin:0;color:var(--muted);font-size:14.5px;">${n.desc}</p><div class="bom-list">${affHtml}${mfgHtml}</div>`;
     }
     selectNode(0);
-      fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
-      document.getElementById('pedestalGrid').innerHTML = (Array.isArray(list) ? list : [list]).map(p => `
-        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
-          <model-viewer src="${p.glb}" alt="${p.title}" src="${p.glb}" poster="${p.thumb}" environment-image="neutral" exposure="1.3" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
-          <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
+          fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
+      const items = Array.isArray(list) ? list : [list];
+      document.getElementById('pedestalGrid').innerHTML = items.map(p => `
+        <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:16px;">
+          <div style="display:grid;grid-template-columns:160px 1fr;gap:14px;align-items:center;margin-bottom:12px;">
+            <img src="${p.thumb}" alt="${p.title}" style="width:160px;height:160px;object-fit:cover;border-radius:8px;border:1px solid #252b3d;" />
+            <model-viewer src="${p.glb}" poster="${p.thumb}" alt="${p.title}" camera-controls auto-rotate camera-orbit="35deg 70deg auto" environment-image="neutral" exposure="1.4" shadow-intensity="1" style="width:100%;height:260px;background:#090b10;border-radius:8px;"></model-viewer>
+          </div>
+          <div style="font-weight:800;font-size:15px;margin-bottom:8px;">${p.title}</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;"><a class="bom-pill mfg" href="${p.gumroadUrl}" target="_blank" rel="noopener">Gumroad $5 ↗</a><a class="bom-pill mfg" href="${p.payhipUrl}" target="_blank" rel="noopener">Payhip $5 ↗</a><a class="bom-pill mfg" href="${p.jinxxyUrl}" target="_blank" rel="noopener">Jinxxy $5 ↗</a></div>
         </div>`).join('');
-    }).catch(() => {});
+    });
   </script>
 </body>
 </html>
+
 
 
 
