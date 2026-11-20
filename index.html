@@ -32,7 +32,7 @@
   <script type="module" src="https://googleapis.com">    fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
       document.getElementById('pedestalGrid').innerHTML = (Array.isArray(list) ? list : [list]).map(p => `
         <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
-          <model-viewer src="${p.glb}" alt="${p.title}" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
+          <model-viewer src="${p.glb}" alt="${p.title}" src="${p.glb}" poster="${p.thumb}" environment-image="neutral" exposure="1.3" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
           <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;"><a class="bom-pill mfg" href="${p.gumroadUrl}" target="_blank" rel="noopener">Gumroad $5 ↗</a><a class="bom-pill mfg" href="${p.payhipUrl}" target="_blank" rel="noopener">Payhip $5 ↗</a><a class="bom-pill mfg" href="${p.jinxxyUrl}" target="_blank" rel="noopener">Jinxxy $5 ↗</a></div>
         </div>`).join('');
@@ -51,7 +51,8 @@
         <a href="https://theprimitivefox.com" target="_blank" rel="noopener">The Primitive Fox ↗</a>
         <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
-    </header>
+    <div style="margin-top:12px;"><a href="gear.html" style="display:inline-block;background:#141824;border:1px solid #38bdf8;color:#38bdf8;padding:8px 14px;border-radius:8px;text-decoration:none;font-size:13.5px;font-weight:700;">Verified Gear (24 Tested Parts) →</a></div></header>
+    <div class="inspector" id="inspector"></div>
     <div class="graph-box">
       <svg class="noodles" viewBox="0 0 960 290" xmlns="http://w3.org">
         <!-- Curved Noodles -->
@@ -104,34 +105,11 @@
       </svg>
     </div>
 
-    <div class="inspector" id="inspector"></div>
+    
 
-    <div class="inspector"><h3>Verified Field, LoRa &amp; Workbench Gear BoM (24 Tested Parts)</h3><p style="margin:0;color:var(--muted);font-size:14px;">Exact components ordered and tested across our bench, NAS, and off-grid mesh builds:</p><div class="bom-list"><a class="bom-pill aff" href="https://link.amazon/B0iEkXX9e" target="_blank" rel="noopener">Amazon Gear (B0FSTD4BYM) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0c5uoIfq" target="_blank" rel="noopener">Amazon Gear (B0D29JTYPK) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0hqe42hu" target="_blank" rel="noopener">Amazon Gear (B0F1FHHH5X) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B04qwLpdJ" target="_blank" rel="noopener">Amazon Gear (B0GFN7ZS6M) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0am0WZIp" target="_blank" rel="noopener">Amazon Gear (B09P52PRT1) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B09ON4i9A" target="_blank" rel="noopener">Amazon Gear (B0GBSTPHKG) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0hlP7y9b" target="_blank" rel="noopener">Amazon Gear (B0FQJYDKQ7) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B03gvOU1K" target="_blank" rel="noopener">Amazon Gear (B0FRS7H1FT) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B06F97Ait" target="_blank" rel="noopener">Amazon Gear (B0FD9XZD4C) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B00oMeEkJ" target="_blank" rel="noopener">Amazon Gear (B0FLX671VF) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0ak3CiZz" target="_blank" rel="noopener">Amazon Gear (B07BRS249H) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0aCynBZb" target="_blank" rel="noopener">Amazon Gear (B0BTWT7CZC) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0672Ff7G" target="_blank" rel="noopener">Amazon Gear (B0HMRL4Z4N) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B03PQ4JK0" target="_blank" rel="noopener">Amazon Gear (B0BV8ZQ81F) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0asXSHcw" target="_blank" rel="noopener">Amazon Gear (B0GT94VGBC) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B06byh9yd" target="_blank" rel="noopener">Amazon Gear (B01NBE2XIR) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B02pY851z" target="_blank" rel="noopener">Amazon Gear (B00LP25V1A) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B05tGydDJ" target="_blank" rel="noopener">Amazon Gear (B01HTC4XKY) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0ha7sxjQ" target="_blank" rel="noopener">Amazon Gear (B0C1G9GBRZ) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0csE66JA" target="_blank" rel="noopener">Amazon Gear (B01ERP6WL4) ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B03WYQ60z" target="_blank" rel="noopener">Bambu Combo Printer Multi Color Printing ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0dk6KNFV" target="_blank" rel="noopener">Meta Quest 512GB Virtual Reality ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B09VLUucL" target="_blank" rel="noopener">Apple iPad Pro 11 inch Landscape ↗</a>
-<a class="bom-pill aff" href="https://link.amazon/B0en3ypx2" target="_blank" rel="noopener">DJI Transmission Transceiver Beginners Batteries ↗</a></div></div>
+    
     <div class="inspector">
-      <h3>Interactive 3D Artifact Pedestals (.GLB)</h3>
+      <h3>Interactive 3D CAD Viewport (.GLB)</h3>
       <p style="margin:0 0 14px;color:var(--muted);font-size:14px;">Drag to orbit, scroll to zoom—exported directly from Blender via our automated FedEWAM pipeline:</p>
       <div id="pedestalGrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;"></div>
     </div>
@@ -195,7 +173,7 @@
       fetch('pedestals.json?v=' + Date.now()).then(r => r.json()).then(list => {
       document.getElementById('pedestalGrid').innerHTML = (Array.isArray(list) ? list : [list]).map(p => `
         <div style="background:#141824;border:1px solid #252b3d;border-radius:12px;padding:14px;">
-          <model-viewer src="${p.glb}" alt="${p.title}" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
+          <model-viewer src="${p.glb}" alt="${p.title}" src="${p.glb}" poster="${p.thumb}" environment-image="neutral" exposure="1.3" auto-rotate camera-controls shadow-intensity="1" style="width:100%;height:240px;background:#090b10;border-radius:8px;margin-bottom:10px;"></model-viewer>
           <div style="font-weight:800;font-size:15px;margin-bottom:6px;text-transform:capitalize;">${p.title}</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;"><a class="bom-pill mfg" href="${p.gumroadUrl}" target="_blank" rel="noopener">Gumroad $5 ↗</a><a class="bom-pill mfg" href="${p.payhipUrl}" target="_blank" rel="noopener">Payhip $5 ↗</a><a class="bom-pill mfg" href="${p.jinxxyUrl}" target="_blank" rel="noopener">Jinxxy $5 ↗</a></div>
         </div>`).join('');
@@ -203,6 +181,7 @@
   </script>
 </body>
 </html>
+
 
 
 

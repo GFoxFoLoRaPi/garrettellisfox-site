@@ -3,9 +3,9 @@
     "id": "battery",
     "title": "12V Automotive Lead-Acid Battery (.GLB + .FBX)",
     "glb": "models/battery.glb",
+    "thumb": "models/battery_Thumb.png",
     "gumroadUrl": "https://gumroad.com",
     "payhipUrl": "https://payhip.com",
-    "jinxxyUrl": "https://jinxxy.com/foxflamefoundry/A4A1b",
-    "updated": "2026-11-19"
+    "jinxxyUrl": "https://jinxxy.com"
   }
 ]
