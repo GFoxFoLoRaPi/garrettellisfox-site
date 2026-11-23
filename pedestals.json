@@ -1,9 +1,18 @@
-﻿[
+[
   {
     "id": "battery",
     "title": "12V Automotive Lead-Acid Battery (.GLB + .FBX)",
     "glb": "models/battery.glb",
     "thumb": "models/battery_Thumb.png",
+    "gumroadUrl": "https://gumroad.com",
+    "payhipUrl": "https://payhip.com",
+    "jinxxyUrl": "https://jinxxy.com"
+  },
+  {
+    "id": "dresser",
+    "title": "4-Drawer Black Faux-Wood Dresser (.GLB + .FBX)",
+    "glb": "models/dresser.glb?v=2",
+    "thumb": "models/dresser_poster.png",
     "gumroadUrl": "https://gumroad.com",
     "payhipUrl": "https://payhip.com",
     "jinxxyUrl": "https://jinxxy.com"
